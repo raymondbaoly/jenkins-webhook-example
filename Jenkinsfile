@@ -5,6 +5,7 @@ pipeline {
         stage('Pre-Build') {
             steps {
                 echo 'Pre-Build...'
+                echo 'Send status Pre-Build to Mail, Telegram, Slack...'
             }
         }
         stage('Build') {
@@ -25,4 +26,16 @@ pipeline {
             }
         }
     }
+    
+    post {
+        success {
+            echo 'Success...'
+            echo 'Send status Success to Mail, Telegram, Slack...'
+        }
+        failure {
+            echo 'Failure...'
+            echo 'Send status Failure to Mail, Telegram, Slack...'
+        }
+    }
+
 }
